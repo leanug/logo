@@ -5,8 +5,10 @@ import Image from "next/image"
 import { FaDownload, FaCopy, FaCircleInfo } from "react-icons/fa6"
 import { useQueryClient } from '@tanstack/react-query'
 
-import { useModalStore, useNotificationStore } from "@/store"
+import LogoActionBtn from "@/components/ui/buttons/LogoActionBtn"
+import { useModalStore } from "@/store"
 import { updateLogo } from '@/server/update-logo'
+import { useCopyLogo } from "@/hooks/use-copy-logo"
 
 type LogoItemProps = {
   id: string
@@ -28,49 +30,18 @@ function LogoItem({
   updatedAt
 }: LogoItemProps) {
   const {setOpenModal, setModalData} = useModalStore()
-  const {addNotification} = useNotificationStore()
-
+  const {copySvgFromFile} = useCopyLogo({fileName, id, tag})
   const queryClient = useQueryClient()
-
-  const copySvgFromFile = async (e: any) => {
-    e.stopPropagation()
-
-    try {
-      // Fetch the SVG content
-      const response = await fetch("/next.svg");
-      if (!response.ok) {
-        throw new Error("Failed to fetch SVG file.")
-      }
   
-      const svgContent = await response.text();
-  
-      // Copy to clipboard
-      await navigator.clipboard.writeText(svgContent);
-      addNotification('SVG copied to clipboard!', 'success')
-      const updatedLogo = await updateLogo({
-        id, 
-        action: 'copies'
-      })
-
-      if (updatedLogo) {
-        // Invalidate or update the cache for the relevant query
-        queryClient.invalidateQueries({ queryKey: ['logos', tag] })
-      }
-    } catch (error) {
-      console.error("Error copying SVG:", error);
-      addNotification('Error copying SVG', 'error')
-    }
-  };
-
   /* Download Logo */
   const downloadSvg = async (e: any) => {
     e.stopPropagation()
-    const svgUrl = "/next.svg"
+    const svgUrl = `/${fileName}`
   
     // Create a temporary <a> element to initiate download
     const link = document.createElement("a")
     link.href = svgUrl;
-    link.download = "next.svg"; // File name for the download
+    link.download = fileName // File name for the download
     document.body.appendChild(link)
     link.click();
     document.body.removeChild(link)
@@ -118,32 +89,20 @@ function LogoItem({
           className="w-20"
         />
         <div className="absolute top-2.5 right-2.5 flex gap-1.5 z-10">
-          <button
-            data-tip="Download SVG"
-            className="
-              btn btn-sm bg-gray-100 py-1.5  
-              hover:bg-gray-200 flex items-center gap-2 opacity-0
-              group-hover:opacity-100 transition-opacity duration-300
-            "
+          <LogoActionBtn
+            tooltip="Open Info"
+            icon={<FaCircleInfo size={16} />}
             onClick={openModal}
-          >
-            <FaCircleInfo size={16} />
-          </button>
-          <button
-            data-tip="Download SVG"
-            className="
-              btn btn-sm bg-gray-100 py-1.5
-              hover:bg-gray-200 flex items-center gap-2 opacity-0
-              group-hover:opacity-100 transition-opacity duration-300
-            "
+          />
+          <LogoActionBtn
+            tooltip="Download SVG"
+            icon={<FaDownload size={16} />}
             onClick={downloadSvg}
-          >
-            <FaDownload size={16} />
-          </button>
+          />
         </div>
       </div>
     </div>
-      )
-    }
+  )
+}
 
 export default LogoItem
