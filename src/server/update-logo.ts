@@ -8,7 +8,7 @@ type UpdateLogoParams = {
 export async function updateLogo({ id, action }: UpdateLogoParams): Promise<Logo | null> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   const endpoint = process.env.NEXT_PUBLIC_UPDATE_LOGO
-  const url = `${baseUrl}${endpoint}/${id}/copies`
+  const url = `${baseUrl}${endpoint}/${id}/${action}`
   
   try {
     const response = await fetch(url, {

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from "next/link"
-import NavLinks from './nav'
+import NavLinks from './Nav'
 import { FaBars, FaXmark } from 'react-icons/fa6'
 
 export default function Nav() {
@@ -22,7 +22,7 @@ export default function Nav() {
     >
       <div>
         <Link href="/">
-          <div className='w-32'>
+          <div className='w-40 btn btn-ghost px-2'>
             <Image
               src="/logo-orange.svg"
               alt="Logo"

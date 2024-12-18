@@ -25,7 +25,7 @@ export async function GET(req: Request, {params}: {params: Params}) {
     await connectDB()
 
     // Fetch projects related to the userId
-    const logos = await Logo.find({ where: { tags: { has: tag } } })
+    const logos = await Logo.find({ tags: { $in: [tag] } })
     
     // Return a success response with the newly created user
     return NextResponse.json({ 

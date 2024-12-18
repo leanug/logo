@@ -1,4 +1,4 @@
-import ContentWrapper from "@/components/layout/content-wrapper"
+import ContentWrapper from "@/components/layout/ContentWrapper"
 import CreateLogoForm from "@/components/forms/CreateLogoForm"
 
 function page() {

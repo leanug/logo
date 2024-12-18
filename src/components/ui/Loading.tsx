@@ -1,4 +1,4 @@
-export const LoadingIndicator = ({
+export const Loading = ({
   size = 'loading-md',
   color = '',
   centered = false,
