@@ -2,12 +2,11 @@
 
 import Image from "next/image"
 
-import { FaDownload, FaCopy, FaCircleInfo } from "react-icons/fa6"
-import { useQueryClient } from '@tanstack/react-query'
+import { FaDownload, FaCircleInfo } from "react-icons/fa6"
 
 import LogoActionBtn from "@/components/ui/buttons/LogoActionBtn"
-import { useModalStore } from "@/store"
-import { updateLogo } from '@/server/update-logo'
+import { useLogoInfoModal } from "@/hooks/use-logo-info-modal"
+import { useDownloadLogo } from '@/hooks/use-download-logo'
 import { useCopyLogo } from "@/hooks/use-copy-logo"
 
 type LogoItemProps = {
@@ -29,47 +28,16 @@ function LogoItem({
   tag,
   updatedAt
 }: LogoItemProps) {
-  const {setOpenModal, setModalData} = useModalStore()
   const {copySvgFromFile} = useCopyLogo({fileName, id, tag})
-  const queryClient = useQueryClient()
-  
-  /* Download Logo */
-  const downloadSvg = async (e: any) => {
-    e.stopPropagation()
-    const svgUrl = `/${fileName}`
-  
-    // Create a temporary <a> element to initiate download
-    const link = document.createElement("a")
-    link.href = svgUrl;
-    link.download = fileName // File name for the download
-    document.body.appendChild(link)
-    link.click();
-    document.body.removeChild(link)
-
-    const updatedLogo = await updateLogo({
-      id, 
-      action: 'downloads'
-    })
-
-    if (updatedLogo) {
-      // Invalidate or update the cache for the relevant query
-      queryClient.invalidateQueries({ queryKey: ['logos', tag] })
-    }
-  }
-
-  const openModal = (e: any) => {
-    e.stopPropagation()
-    const modalData = { 
-      id,
-      copies, 
-      downloads,
-      fileName,
-      updatedAt,
-      tags
-    }
-    setModalData(modalData)
-    setOpenModal('modal')
-  }
+  const {downloadSvg} = useDownloadLogo({fileName, id, tag})
+  const {openLogoInfoModal} = useLogoInfoModal({ 
+    id,
+    copies, 
+    downloads,
+    fileName,
+    updatedAt,
+    tags
+  })
 
   return (
     <div className="w-full inline">
@@ -92,7 +60,7 @@ function LogoItem({
           <LogoActionBtn
             tooltip="Open Info"
             icon={<FaCircleInfo size={16} />}
-            onClick={openModal}
+            onClick={openLogoInfoModal}
           />
           <LogoActionBtn
             tooltip="Download SVG"
