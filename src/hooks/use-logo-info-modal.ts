@@ -18,6 +18,7 @@ export const useLogoInfoModal = ({
   downloads,
   fileName,
   updatedAt,
+  tag,
   tags
 }: UseLogoInfoModalProps) => {
   const {setOpenModal, setModalData} = useModalStore()
@@ -30,6 +31,7 @@ export const useLogoInfoModal = ({
       downloads,
       fileName,
       updatedAt,
+      tag,
       tags
     })
     setOpenModal('modal')

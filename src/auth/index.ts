@@ -1,13 +1,13 @@
 import NextAuth from "next-auth"
 
-import authConfig from "./auth.config";
+import authConfig from "./auth.config"
 import User from "@/models/user"
-import client from '@/utils/connectDB'
+import { connectDB } from '@/utils/connectDB'
 import { MongoDBAdapter } from "@auth/mongodb-adapter"
 
 // Define authOptions
 export const {handlers, signIn, signOut, auth} = NextAuth ({
-  adapter: MongoDBAdapter(client),
+  adapter: MongoDBAdapter(connectDB),
   ...authConfig,
   session: { strategy: "jwt" },
   callbacks: {
@@ -25,7 +25,7 @@ export const {handlers, signIn, signOut, auth} = NextAuth ({
   events: {
     async linkAccount({user}) {
       try {
-        await client.connect();
+        await connectDB();
 
         // Update the emailVerified field with the current date
         await User.findByIdAndUpdate(user.id, {

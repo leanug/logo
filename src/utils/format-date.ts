@@ -1,5 +1,4 @@
-export function formatDate(dateString: string): string {
-  const date = new Date(dateString);
+export function formatDate(date: Date): string {
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
   return `Posted on ${date.toLocaleDateString('en-GB', options)}`;
 }

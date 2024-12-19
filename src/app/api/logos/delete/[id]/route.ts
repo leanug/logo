@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server'
 import mongoose from 'mongoose'
 
-import Post from '@/models/logo' // Adjust the import path according to your setup
-import { connectDB } from '@/server/mongodb'
-import { ENV } from '@/utils/constants'
+import Logo from '@/models/logo' // Adjust the import path according to your setup
+import { connectDB } from '@/utils/connectDB'
 
 interface Params {
   id: string
@@ -43,7 +42,7 @@ export async function DELETE(req: Request, { params }: { params: Params }) {
     await connectDB()
 
     // Delete the post from the database
-    const result = await Post.findByIdAndDelete(id)
+    const result = await Logo.findByIdAndDelete(id)
 
     if (!result) {
       return NextResponse.json(
@@ -61,9 +60,7 @@ export async function DELETE(req: Request, { params }: { params: Params }) {
 
   } catch (error) {
     return NextResponse.json(
-      ENV.IS_DEV
-      ? { message: 'Internal server error', error }
-      : { message: 'Internal server error' }, 
+      { message: 'Internal server error' }, 
       { status: 500 }
     )
   }

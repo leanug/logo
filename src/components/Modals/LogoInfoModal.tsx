@@ -12,6 +12,26 @@ import { tagTitles } from '@/data/tag-titles'
 import { formatDate } from '@/utils/format-date'
 import { useModalStore }  from '@/store/use-modal-store'
 
+// Default logo object
+const defaultLogo = {
+  id: "default-id",
+  copies: 0,
+  downloads: 0,
+  fileName: "default.svg",
+  updatedAt: new Date(),
+  tag: "default",
+  tags: ["tech"]
+};
+
+// Initialize the variables with default values
+let id = defaultLogo.id;
+let copies = defaultLogo.copies;
+let downloads = defaultLogo.downloads;
+let fileName = defaultLogo.fileName;
+let updatedAt = defaultLogo.updatedAt;
+let tag = defaultLogo.tag;
+let tags = defaultLogo.tags;
+
 /**
  * Modal component that renders a modal dialog.
  * @returns {JSX.Element|null} The JSX element representing
@@ -19,15 +39,19 @@ import { useModalStore }  from '@/store/use-modal-store'
  */
 const Modal: React.FC = () => {
   const {openModal, closeModal, modalData} = useModalStore()
-  const { 
-    id,
-    copies, 
-    downloads,
-    fileName,
-    updatedAt,
-    tag,
-    tags 
-  } = modalData
+  // Check if modalData is neither null nor string
+  // Only destructure if modalData is not null and is an object, not a string
+  if (modalData && typeof modalData !== "string") {
+    // Directly assign values from modalData to the variables
+    id = modalData.id ?? defaultLogo.id;
+    copies = modalData.copies ?? defaultLogo.copies;
+    downloads = modalData.downloads ?? defaultLogo.downloads;
+    fileName = modalData.fileName ?? defaultLogo.fileName;
+    updatedAt = new Date(modalData.updatedAt) ?? defaultLogo.updatedAt.toISOString();
+    tag = modalData.tag ?? defaultLogo.tag;
+    tags = modalData.tags ?? defaultLogo.tags;
+  }
+
   const {downloadSvg} = useDownloadLogo({fileName, id, tag})
   const {copySvgFromFile} = useCopyLogo({fileName, id, tag})
   
