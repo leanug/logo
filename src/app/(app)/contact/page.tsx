@@ -1,5 +1,5 @@
-import ContentWrapper from "@/components/Layout/ContentWrapper"
-import ContactForm from "@/components/forms/ContactForm"
+import ContentWrapper from "@/components/Layout/Container"
+import ContactForm from "@/components/Forms/ContactForm"
 
 export default function Page() {
   return (

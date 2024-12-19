@@ -1,5 +1,5 @@
-import ContentWrapper from "@/components/Layout/ContentWrapper"
-import CreateLogoForm from "@/components/forms/CreateLogoForm"
+import ContentWrapper from "@/components/Layout/Container"
+import CreateLogoForm from "@/components/Forms/CreateLogoForm"
 
 function page() {
   return (

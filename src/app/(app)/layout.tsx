@@ -4,10 +4,10 @@ import "../globals.css"
 
 import Header from "@/components/Layout/Header"
 import Footer from "@/components/Layout/Footer"
-import SessionWrapper from "@/components/session/session-wrapper"
+import SessionWrapper from "@/components/Session/session-wrapper"
 import Modal from "@/components/Modals/LogoInfoModal"
-import TanstackProvider from "@/components/providers/tanstack-provider"
-import { Notification } from "@/components/notification"
+import TanstackProvider from "@/components/Providers/TanstackProvider"
+import { Notification } from "@/components/Notification"
 import { siteConfig } from "@/config/site"
 
 const inter = Inter({ subsets: ["latin"] })

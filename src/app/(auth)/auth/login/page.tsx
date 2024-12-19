@@ -1,4 +1,4 @@
-import AuthContent from '@/components/auth/AuthContent'
+import AuthContent from '@/components/Auth/AuthContent'
 
 async function LoginPage() {
   return (

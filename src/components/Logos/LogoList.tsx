@@ -19,7 +19,7 @@ function LogoList() {
   } = useFetchLogos(tag as string)
   
   return (
-    <section className="md:max-w-7xl mx-auto max-w-screen overflow-x-hidden px-2.5">
+    <section className="md:max-w-7xl mx-auto px-2.5">
       {isLoading && <div className="flex justify-center"><Loading /></div>}
       {isError && (
         <div className="text-center space-y-3">

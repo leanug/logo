@@ -1,6 +1,6 @@
 'use client'
 
-import { NotificationList } from './notification-list'
+import { NotificationList } from '@/components/Notification/NotificationList'
 
 export const Notification = () => {
   return (

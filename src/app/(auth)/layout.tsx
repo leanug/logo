@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import "../globals.css"
 import { Inter } from "next/font/google"
 
-import SessionWrapper from "@/components/session/session-wrapper"
+import SessionWrapper from "@/components/Session/session-wrapper"
 import GoBackBtn from "@/components/UI/Buttons/GoBack"
 import { auth } from "@/auth"
-import { Notification } from "@/components/notification"
+import { Notification } from "@/components/Notification"
 import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {

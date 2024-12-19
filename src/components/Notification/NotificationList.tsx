@@ -1,8 +1,5 @@
-// src/components/notification/notification-list.tsx
-import React from 'react'
-
 import { useNotificationStore } from '@/store/use-notification-store'
-import { Notification } from './notification-item'
+import { Notification } from '@/components/Notification/NotificationItem'
 
 export const NotificationList = () => {
   const { notifications, removeNotification } = useNotificationStore()
@@ -19,7 +16,6 @@ export const NotificationList = () => {
               removeNotification={ removeNotification }
             />
           </li>
-          
         ))
       }
     </ul>
