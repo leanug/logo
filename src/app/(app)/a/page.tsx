@@ -1,5 +1,5 @@
 import Link from "next/link"
-import ContentWrapper from "@/components/layout/ContentWrapper"
+import ContentWrapper from "@/components/Layout/ContentWrapper"
 
 function page() {
   return (

@@ -13,7 +13,7 @@ import {
   FormError, 
   FormTextarea, 
   Button 
-} from '@/components/ui/form'
+} from '@/components/UI/form'
 import { useNotificationStore } from '@/store'
 import ContactFormSchema from '@/validators/contact'
 

@@ -4,8 +4,8 @@ import { useParams } from "next/navigation"
 
 import LogoItem from "@/components/Logos/LogoItem"
 import { useFetchLogos } from "@/hooks/use-fetch-logos"
-import { Logo } from "@/types"
-import { Loading } from "@/components/ui/Loading"
+import { Logo } from "@/types/logo"
+import { Loading } from "@/components/UI/Loading"
 
 function LogoList() {
   const params = useParams()
@@ -19,7 +19,7 @@ function LogoList() {
   } = useFetchLogos(tag as string)
   
   return (
-    <section className="max-w-7xl mx-auto">
+    <section className="md:max-w-7xl mx-auto max-w-screen overflow-x-hidden px-2.5">
       {isLoading && <div className="flex justify-center"><Loading /></div>}
       {isError && (
         <div className="text-center space-y-3">
@@ -38,9 +38,9 @@ function LogoList() {
               copies={logo?.copies}
               downloads={logo?.downloads}
               fileName={logo?.fileName || 'default.svg'}
-              updatedAt={logo?.updatedAt}
+              updatedAt={logo?.updatedAt as Date} 
               tags={logo?.tags}
-              tag={tag}
+              tag={tag as string}
             />
           ))}
         </div>

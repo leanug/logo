@@ -3,7 +3,7 @@ import "../globals.css"
 import { Inter } from "next/font/google"
 
 import SessionWrapper from "@/components/session/session-wrapper"
-import GoBackBtn from "@/components/ui/buttons/go-back"
+import GoBackBtn from "@/components/UI/Buttons/GoBack"
 import { auth } from "@/auth"
 import { Notification } from "@/components/notification"
 import { redirect } from "next/navigation"

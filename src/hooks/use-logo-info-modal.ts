@@ -8,7 +8,8 @@ type UseLogoInfoModalProps = {
   downloads: number 
   fileName: string
   tags: string[]
-  updatedAt: string
+  tag: string
+  updatedAt: Date
 }
 
 export const useLogoInfoModal = ({ 

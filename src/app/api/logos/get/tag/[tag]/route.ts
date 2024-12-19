@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 
 import Logo from '@/models/logo'
 import { connectDB } from '@/utils/connectDB'
-import { isValidSlug } from '@/utils'
 
 type Params = {
   tag: string

@@ -3,8 +3,10 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from "next/link"
-import NavLinks from './Nav'
+
 import { FaBars, FaXmark } from 'react-icons/fa6'
+
+import NavLinks from '@/components/Layout/Nav'
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,7 +19,7 @@ export default function Nav() {
     <header 
       className="
         flex items-center px-2.5 w-full justify-between 
-        lg:mx-auto py-2.5 sm:py-5
+        lg:mx-auto py-2.5 sm:py-3 border-b border-base-200
       "
     >
       <div>

@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import ButtonSocial from '@/components/ui/buttons/button-social'
+import ButtonSocial from '@/components/UI/Buttons/SocialSignInBtn'
 
 /**
  * Component for displaying the authentication content, 

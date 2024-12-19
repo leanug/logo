@@ -3,9 +3,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { FaXmark } from 'react-icons/fa6'
+import { FaXmark, FaDownload, FaCopy } from 'react-icons/fa6'
 
-import { logoTags } from '@/data/logo-tags'
+import LogoActionModalBtn from "@/components/UI/Buttons/LogoActionModalBtn"
+import { useDownloadLogo } from '@/hooks/use-download-logo'
+import { useCopyLogo } from "@/hooks/use-copy-logo"
 import { tagTitles } from '@/data/tag-titles'
 import { formatDate } from '@/utils/format-date'
 import { useModalStore }  from '@/store/use-modal-store'
@@ -23,8 +25,11 @@ const Modal: React.FC = () => {
     downloads,
     fileName,
     updatedAt,
+    tag,
     tags 
   } = modalData
+  const {downloadSvg} = useDownloadLogo({fileName, id, tag})
+  const {copySvgFromFile} = useCopyLogo({fileName, id, tag})
   
   return openModal === 'modal' ? (
     <div
@@ -67,7 +72,18 @@ const Modal: React.FC = () => {
               <h1 className='text-xl font-bold'>
                 Logo info:
               </h1>
-              <button>Download</button>
+              <div className="flex gap-2.5 items-center">
+                <LogoActionModalBtn
+                  tooltip="Download SVG"
+                  icon={<FaDownload size={16} />}
+                  onClick={downloadSvg}
+                />
+                <LogoActionModalBtn
+                  tooltip="Copy SVG"
+                  icon={<FaCopy size={16} />}
+                  onClick={copySvgFromFile}
+                />
+              </div>
             </div>
             <div className="text-sm mt-3">{formatDate(updatedAt)}</div>
             <div className="flex gap-6 flex-wrap mt-6">
@@ -86,6 +102,7 @@ const Modal: React.FC = () => {
                 const title = tagTitles[tag as keyof typeof tagTitles];
                 return (
                   <Link
+                    key={tag}
                     onClick={() => closeModal()}
                     href={`/t/${tag}`}
                     className="
