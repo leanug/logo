@@ -13,7 +13,7 @@ import {
   FormError, 
   FormTextarea, 
   Button 
-} from '@/components/UI/form'
+} from '@/components/UI/Form'
 import { useNotificationStore } from '@/store'
 import ContactFormSchema from '@/validators/contact'
 
@@ -70,7 +70,7 @@ export default function EmailForm() {
           href="https://x.com/scriptpxls"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-orange-500 font-medium"
+          className="font-semibold text-orange-500"
         >
           X (ScriptPxls)
         </a>.
@@ -84,7 +84,7 @@ export default function EmailForm() {
             register={register} 
             name="name" 
             errors={errors}
-            placeholder='Dark Mode Toggle'
+            placeholder='Name'
           />
           {errors?.name && (
             <FormError>
@@ -100,7 +100,7 @@ export default function EmailForm() {
             register={register} 
             name="email" 
             errors={errors}
-            placeholder='Dark Mode Toggle'
+            placeholder='Email'
           />
           {errors?.email && (
             <FormError>
@@ -115,7 +115,7 @@ export default function EmailForm() {
             register={register} 
             name="message" 
             errors={errors}
-            placeholder='Your message'
+            placeholder='Message'
           />
           {errors.message && (
             <FormError>

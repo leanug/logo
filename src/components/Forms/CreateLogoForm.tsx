@@ -12,7 +12,7 @@ import {
   FormField, 
   FormError, 
   Button 
-} from '@/components/UI/form'
+} from '@/components/UI/Form'
 import { useNotificationStore } from '@/store'
 import LogoFormSchema from '@/validators/logo'
 import { logoTags } from '@/data/logo-tags'
