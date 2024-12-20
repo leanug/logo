@@ -12,18 +12,6 @@ import ButtonSocial from '@/components/UI/Buttons/SocialSignInBtn'
 const AuthContent: React.FC = () => {
   return (
     <div>
-      <div className="mx-auto mb-6 max-w-40">
-        <Image
-          src="/feedbackrealm-logo.svg"
-          alt="Logo"
-          width={180}
-          height={24}
-          placeholder="empty" // use 'empty' for a blank placeholder
-          loading="eager" 
-          priority={true}
-          className="logo"
-        />
-      </div>
       <h1 className="text-xl font-bold text-center mb-5">
         Sign in
       </h1>

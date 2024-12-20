@@ -4,9 +4,7 @@ import { Inter } from "next/font/google"
 
 import SessionWrapper from "@/components/Session/session-wrapper"
 import GoBackBtn from "@/components/UI/Buttons/GoBack"
-import { auth } from "@/auth"
 import { Notification } from "@/components/Notification"
-import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {
   title: "Login - FeedbackRealm",
@@ -23,12 +21,6 @@ interface LayoutProps {
 }
 
 export default async function Layout({ children }: LayoutProps) {
-  const session = await auth()
-
-  if (session) {
-    redirect("/admin")
-  }
-
   return (
     <SessionWrapper>
       <html lang="en" data-theme="light">
