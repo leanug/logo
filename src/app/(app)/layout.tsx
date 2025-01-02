@@ -9,6 +9,7 @@ import Modal from "@/components/Modals/LogoInfoModal"
 import TanstackProvider from "@/components/Providers/TanstackProvider"
 import { Notification } from "@/components/Notification"
 import { siteConfig } from "@/config/site"
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -36,6 +37,7 @@ export default async function RootLayout({
             </div>
             <Notification />
             <Modal />
+            <Toaster />
           </body>
         </html>
       </TanstackProvider>

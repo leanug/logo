@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "../globals.css"
 import { Inter } from "next/font/google"
+import { Toaster } from 'react-hot-toast';
 
 import SessionWrapper from "@/components/Session/session-wrapper"
 import GoBackBtn from "@/components/UI/Buttons/GoBack"
@@ -32,6 +33,7 @@ export default async function Layout({ children }: LayoutProps) {
                 {children}
               </main>
               <Notification />
+              <Toaster />
             </div>
           </div>
         </body>

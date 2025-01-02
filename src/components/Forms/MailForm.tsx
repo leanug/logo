@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 export default function SendMailForm({
   sendMail,
 }: {
-  sendMail: (formData: FormData) => Promise<{ success: boolean, error?: string }>;
+  sendMail: (formData: FormData) => Promise<{ success: boolean, error: string | null }>;
 }) { const { 
     register, 
     handleSubmit,
