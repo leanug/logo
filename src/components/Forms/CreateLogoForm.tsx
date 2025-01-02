@@ -14,7 +14,7 @@ import {
   Button 
 } from '@/components/UI/Form'
 import { useNotificationStore } from '@/store'
-import LogoFormSchema from '@/validators/logo'
+import LogoFormSchema from '@/utils/validation/logo'
 import { logoTags } from '@/data/logo-tags'
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL

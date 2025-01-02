@@ -15,7 +15,7 @@ import {
   Button 
 } from '@/components/UI/Form'
 import { useNotificationStore } from '@/store'
-import ContactFormSchema from '@/validators/contact'
+import ContactFormSchema from '@/utils/validation/contact'
 
 export default function EmailForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false)

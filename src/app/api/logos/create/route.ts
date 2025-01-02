@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 import Logo from "@/models/logo"
 import { connectDB } from '@/utils/connectDB'
-import LogoFormSchema from '@/validators/logo'
+import LogoFormSchema from '@/utils/validation/logo'
 import { auth } from "@/auth"
 
 export async function POST(req: Request) {
